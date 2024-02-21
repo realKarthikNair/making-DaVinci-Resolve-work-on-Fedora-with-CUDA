@@ -125,10 +125,6 @@ sudo modprobe nvidia_uvm
 ![image](https://github.com/realKarthikNair/making-DaVinci-Resolve-work-on-Fedora-with-CUDA/assets/78267371/5537b047-4738-466b-a2a7-b047b7e5e560)
 
 
-```bash
-/opt/resolve/bin/resolve
-```
-
 If you see GPU error, repeat from step 2 of Section 6. **It really is a hit or miss.**
 
 What I personally do is this: 
