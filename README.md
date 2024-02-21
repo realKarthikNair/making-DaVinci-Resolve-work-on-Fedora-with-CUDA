@@ -91,7 +91,10 @@ sudo mv libgmodule* disabled-libraries
 When it asks to wait or close, just close it.**
 
 
-2. Run DaVinci Resolve again
+2. Run DaVinci Resolve again from application, but use the "Launch using Discrete Graphics Card" option 
+
+![image](https://github.com/realKarthikNair/making-DaVinci-Resolve-work-on-Fedora-with-CUDA/assets/78267371/5537b047-4738-466b-a2a7-b047b7e5e560)
+
 
 This time it should work. But CUDA won't work in most cases.
 
@@ -119,6 +122,9 @@ sudo modprobe nvidia_uvm
 
 3. Run DaVinci Resolve again
 
+![image](https://github.com/realKarthikNair/making-DaVinci-Resolve-work-on-Fedora-with-CUDA/assets/78267371/5537b047-4738-466b-a2a7-b047b7e5e560)
+
+
 ```bash
 /opt/resolve/bin/resolve
 ```
@@ -129,6 +135,6 @@ What I personally do is this:
 
 1. reload nvidia_uvm module
 2. run Blackmagic RAW Speed Test (its installed with DaVinci Resolve)
-3. If it shows CUDA, without closing it, run DaVinci Resolve. Then close RAW Speed Test.
+3. If it shows CUDA, without closing it, run DaVinci Resolve using Discrete Graphics Card. Then close RAW Speed Test.
 4. else, repeat from 1 (reload nvidia_uvm module)
 
