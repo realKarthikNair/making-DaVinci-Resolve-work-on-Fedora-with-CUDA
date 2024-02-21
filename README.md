@@ -39,7 +39,7 @@ sudo dnf remove nvidia-driver xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-
 sudo dnf config-manager --add-repo=https://negativo17.org/repos/fedora-nvidia.repo
 ```
 
-2. Install the Nvidia drivers
+2. Install the Nvidia drivers and CUDA
 
 ```bash
 sudo dnf install nvidia-driver nvidia-driver-cuda cuda-devel 
