@@ -14,7 +14,7 @@ This should have been way easier in an ideal world :/
 
 - Those who aren't using Fedora and/or don't have an Nvidia GPU with CUDA support
 
-### Step 1: Let's start from NVIDIA drivers
+### Section 1: Let's start from NVIDIA drivers
 
 Remove any existing Nvidia or CUDA packages from your system
 
@@ -31,7 +31,7 @@ sudo dnf remove nvidia-driver xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-
 ```
 
 
-### Step 2: Install the Nvidia drivers and CUDA
+### Section 2: Install the Nvidia drivers and CUDA
 
 1. We'll be using Nvidia Drivers from negativo17's repository. You can add the repository by running the following command:
 
@@ -52,7 +52,7 @@ reboot
 ```
 
 
-### Step 3: Install DaVinci Resolve
+### Section 3: Install DaVinci Resolve
 
 1. Download the DaVinci Resolve installer from the official website: https://www.blackmagicdesign.com/products/davinciresolve
 
@@ -69,7 +69,7 @@ chmod +xr DaVinci_Resolve_18.6.5_Linux.run
 
 4. Follow the installation instructions and install DaVinci Resolve
 
-### Step 4: fix library issues
+### Section 4: fix library issues
 
 ```bash
 cd /opt/resolve/libs
