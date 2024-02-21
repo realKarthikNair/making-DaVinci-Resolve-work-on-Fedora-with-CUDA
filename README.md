@@ -27,7 +27,7 @@ Before typing y to confirm the removal, make sure that any other packages that a
 Incase so, try this instead 
 
 ```bash
-sudo dnf remove nvidia-driver xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs
+sudo dnf remove nvidia-driver xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-driver-cuda cuda-devel
 ```
 
 
