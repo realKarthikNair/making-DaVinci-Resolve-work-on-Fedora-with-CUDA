@@ -134,3 +134,28 @@ What I personally do is this:
 3. If it shows CUDA, without closing it, run DaVinci Resolve using Discrete Graphics Card. Then close RAW Speed Test.
 4. else, repeat from 1 (reload nvidia_uvm module)
 
+### Section 7: Fix video files
+
+DaVinci Resolve on Windows can edit video files with proprietary codecs like H.264, H.265, etc. But on Linux, it can't due to licensing issues. (Yes on Linux you can play these files using VLC or after installing the required codecs, but their licensing doesn't allow them to be used in a commercial software like DaVinci Resolve. In case of Windows, Windows license includes these codecs, so it's not a problem.)
+
+So we need to convert every video file to a format that DaVinci Resolve can read.
+
+You can do this using ffmpeg. 
+
+The below example is a script that I use to convert all .MOV files using HEVC (H.265) codec with AAC audio to DNxHD codec with PCM audio so that DaVinci Resolve can use them.
+
+```bash
+#!/bin/bash
+
+# Iterate over each MOV file in the directory
+for file in *.MOV; do
+    # Check if the file is a regular file
+    if [ -f "$file" ]; then
+        # Extract filename without extension
+        filename="${file%.*}"
+        # Run ffmpeg command to convert MOV to DNxHD
+        ffmpeg -i "$file" -c:v dnxhd -profile:v dnxhr_hq -pix_fmt yuv422p -c:a pcm_s16le "${filename}_dnxhd.mov"
+    fi
+done
+```
+You can use ChatGPT to write similar scripts for your use case.

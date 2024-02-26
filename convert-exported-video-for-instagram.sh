@@ -1,0 +1,1 @@
+ffmpeg -i "final_video_title_with_format_here" -vf "scale=-2:1920,format=yuv420p" -c:v libx264 -profile:v main -level:v 4.0 -pix_fmt yuv420p -movflags +faststart -r 30 -c:a aac -b:a 192k "filename.mp4"
