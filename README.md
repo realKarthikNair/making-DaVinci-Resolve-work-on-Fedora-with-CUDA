@@ -62,12 +62,21 @@ You'll get a .zip file after giving away all your personal information. (pro tip
 
 3. cd to the directory where the .run file is located and run the following command:
 
-```bash
-chmod +xr DaVinci_Resolve_18.6.5_Linux.run
-./DaVinci_Resolve_18.6.5_Linux.run
-```
+    a. For Fedora 39
 
-4. Follow the installation instructions and install DaVinci Resolve
+    ```bash
+    chmod +xr DaVinci_Resolve_18.6.5_Linux.run
+    ./DaVinci_Resolve_18.6.5_Linux.run
+    ```
+
+    b. For Fedora 40 (`zlib-ng-compat` has replaced `zlib` in Fedora 40 and Resolve installer demands `zlib`)
+
+   ```bash
+   chmod +xr DaVinci_Resolve_18.6.5_Linux.run
+   sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_18.6.6_Linux.run SKIP_PACKAGE_CHECK=1
+   ```
+
+5. Follow the installation instructions and install DaVinci Resolve
 
 ### Section 4: fix library issues
 
