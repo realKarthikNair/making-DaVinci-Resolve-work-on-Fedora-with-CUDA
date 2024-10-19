@@ -96,8 +96,8 @@ sudo mv libgmodule* disabled-libraries
 /opt/resolve/bin/resolve
 ```
 
-**The welcome screen WON't show up, instead you'll see a black window which will crash later. 
-When it asks to wait or close, just close it.**
+~**The welcome screen WON't show up, instead you'll see a black window which will crash later. 
+When it asks to wait or close, just close it.**~ (fixed in Resolve 19)
 
 
 2. Run DaVinci Resolve again from application, but use the "Launch using Discrete Graphics Card" option 
@@ -105,7 +105,8 @@ When it asks to wait or close, just close it.**
 ![image](https://github.com/realKarthikNair/making-DaVinci-Resolve-work-on-Fedora-with-CUDA/assets/78267371/5537b047-4738-466b-a2a7-b047b7e5e560)
 
 
-This time it should work. But CUDA won't work in most cases.
+This time it should work. ~But CUDA won't work in most cases.~ 
+> \> CUDA issues aren't seen since Resolve 19, atleast on my system. 
 
 How to check if CUDA is working?
 
@@ -135,6 +136,7 @@ sudo modprobe nvidia_uvm
 
 
 If you see GPU error, repeat from step 2 of Section 6. **It really is a hit or miss.**
+> \> GPU/CUDA issues aren't seen since Resolve 19, atleast on my system. 
 
 What I personally do is this: 
 
