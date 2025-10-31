@@ -7,9 +7,10 @@
   - [Section 2: Install the Nvidia drivers and CUDA](#section-2-install-the-nvidia-drivers-and-cuda)
   - [Section 3: Install DaVinci Resolve](#section-3-install-davinci-resolve)
   - [Section 4: fix library issues](#section-4-fix-library-issues)
-  - [Section 5: Run DaVinci Resolve](#section-5-run-davinci-resolve)
-  - [Section 6: Fix CUDA](#section-6-fix-cuda)
-  - [Section 7: Fix video files](#section-7-fix-video-files)
+  - [Section 5: Fix crash on Fedora 43](#section-5-fix-crash-on-fedora-43)
+  - [Section 6: Run DaVinci Resolve](#section-6-run-davinci-resolve)
+  - [Section 7: Fix CUDA](#section-7-fix-cuda)
+  - [Section 8: Fix video files](#section-8-fix-video-files)
 
 
 # making-DaVinci-Resolve-work-on-Fedora-with-CUDA
@@ -102,7 +103,43 @@ sudo mv libgio* disabled-libraries
 sudo mv libgmodule* disabled-libraries
 ```
 
-### Section 5: Run DaVinci Resolve 
+### Section 5: Fix crash on Fedora 43
+
+On Fedora 43 Resolve can crash due to a bundled Python/ABI mismatch. Create a small wrapper that preloads the system Python 3.11 library and update the desktop launcher to use it.
+
+1. Install system Python 3.11 runtime
+```bash
+sudo dnf install -y python3.11 python3.11-libs
+```
+
+2. Create the wrapper script
+```bash
+sudo tee /usr/local/bin/resolve-wrapper > /dev/null <<'EOF'
+#!/bin/bash
+export LD_PRELOAD=/usr/lib64/libpython3.11.so.1.0
+exec /opt/resolve/bin/resolve "$@"
+EOF
+
+sudo chmod +x /usr/local/bin/resolve-wrapper
+```
+
+3. Test by running the wrapper
+```bash
+/usr/local/bin/resolve-wrapper
+```
+
+4. Update the desktop launcher so the application menu launches the wrapper
+```bash
+cp /usr/share/applications/com.blackmagicdesign.resolve.desktop "$HOME/.local/share/applications/"
+sed -i 's|^Exec=.*|Exec=/usr/local/bin/resolve-wrapper %U|' "$HOME/.local/share/applications/com.blackmagicdesign.resolve.desktop"
+```
+Or edit manually:
+```bash
+nano "$HOME/.local/share/applications/com.blackmagicdesign.resolve.desktop"
+```
+
+
+### Section 6: Run DaVinci Resolve 
 
 1. Run DaVinci Resolve
 
@@ -129,7 +166,7 @@ How to check if CUDA is working?
 - Change GPU selection to Nvidia
 - If you see CUDA under GPU Processing Mode after clicking on the dropdown, you're good to go, else continue with below steps
 
-### Section 6: Fix CUDA
+### Section 7: Fix CUDA
 
 1. Remove any rocm opencl packages
 
@@ -159,7 +196,7 @@ What I personally do is this:
 3. If it shows CUDA, without closing it, run DaVinci Resolve using Discrete Graphics Card. Then close RAW Speed Test.
 4. else, repeat from 1 (reload nvidia_uvm module)
 
-### Section 7: Fix video files
+### Section 8: Fix video files
 
 DaVinci Resolve on Windows can edit video files with proprietary codecs like H.264, H.265, etc. But on Linux, it can't due to licensing issues. (Yes on Linux you can play these files using VLC or after installing the required codecs, but their licensing doesn't allow them to be used in a commercial software like DaVinci Resolve. In case of Windows, Windows license includes these codecs, so it's not a problem.)
 
