@@ -2,7 +2,7 @@
 
 This should have been way easier in an ideal world :/
 
-## TESTED ON FEDORA 39
+## TESTED UPTO Fedora 42
 
 **Please read this whole thing once before running any commands.**
 
