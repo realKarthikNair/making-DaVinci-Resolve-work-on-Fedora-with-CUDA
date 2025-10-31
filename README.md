@@ -1,3 +1,17 @@
+# Table of Contents
+
+- [making-DaVinci-Resolve-work-on-Fedora-with-CUDA](#making-davinci-resolve-work-on-fedora-with-cuda)
+  - [Who this is for](#who-this-is-for)
+  - [Who this is not for](#who-this-is-not-for)
+  - [Section 1: Let's start from NVIDIA drivers](#section-1-lets-start-from-nvidia-drivers)
+  - [Section 2: Install the Nvidia drivers and CUDA](#section-2-install-the-nvidia-drivers-and-cuda)
+  - [Section 3: Install DaVinci Resolve](#section-3-install-davinci-resolve)
+  - [Section 4: fix library issues](#section-4-fix-library-issues)
+  - [Section 5: Run DaVinci Resolve](#section-5-run-davinci-resolve)
+  - [Section 6: Fix CUDA](#section-6-fix-cuda)
+  - [Section 7: Fix video files](#section-7-fix-video-files)
+
+
 # making-DaVinci-Resolve-work-on-Fedora-with-CUDA
 
 This should have been way easier in an ideal world :/
