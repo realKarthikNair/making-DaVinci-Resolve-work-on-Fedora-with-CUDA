@@ -139,7 +139,9 @@ nano "$HOME/.local/share/applications/com.blackmagicdesign.resolve.desktop"
 ```
 
 Change the line starting with `Exec=` to:
-```Exec=/usr/local/bin/resolve-wrapper %U
+
+```
+Exec=/usr/local/bin/resolve-wrapper %U
 ```
 
 
