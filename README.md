@@ -138,6 +138,10 @@ Or edit manually:
 nano "$HOME/.local/share/applications/com.blackmagicdesign.resolve.desktop"
 ```
 
+Change the line starting with `Exec=` to:
+```Exec=/usr/local/bin/resolve-wrapper %U
+```
+
 
 ### Section 6: Run DaVinci Resolve 
 
