@@ -1,13 +1,11 @@
 # Table of Contents
 
 - [making-DaVinci-Resolve-work-on-Fedora-with-CUDA](#making-davinci-resolve-work-on-fedora-with-cuda)
-  - [Who this is for](#who-this-is-for)
-  - [Who this is not for](#who-this-is-not-for)
   - [Section 1: Let's start from NVIDIA drivers](#section-1-lets-start-from-nvidia-drivers)
   - [Section 2: Install the Nvidia drivers and CUDA](#section-2-install-the-nvidia-drivers-and-cuda)
   - [Section 3: Install DaVinci Resolve](#section-3-install-davinci-resolve)
   - [Section 4: fix library issues](#section-4-fix-library-issues)
-  - [Section 5: Fix crash on Fedora 43](#section-5-fix-crash-on-fedora-43)
+  - [Section 5: Fix crash due to bundled Python/ABI mismatch](#section-5-fix-crash-due-to-abi-mismatch)
   - [Section 6: Run DaVinci Resolve](#section-6-run-davinci-resolve)
   - [Section 7: Fix CUDA](#section-7-fix-cuda)
   - [Section 8: Fix video files](#section-8-fix-video-files)
@@ -20,14 +18,6 @@ This should have been way easier in an ideal world :/
 ## TESTED for Fedora 43
 
 **Please read this whole thing once before running any commands.**
-
-### Who this is for
-
-- Those who want to use DaVinci Resolve on Fedora with CUDA support
-
-### Who this is not for
-
-- Those who aren't using Fedora and/or don't have an Nvidia GPU with CUDA support
 
 ### Section 1: Let's start from NVIDIA drivers
 
@@ -77,14 +67,14 @@ You'll get a .zip file after giving away all your personal information. (pro tip
 
 3. cd to the directory where the .run file is located and run the following command:
 
-    a. For Fedora 39
+    a. For Fedora 39 and below
 
     ```bash
     chmod +xr DaVinci_Resolve_18.6.5_Linux.run
     ./DaVinci_Resolve_18.6.5_Linux.run
     ```
 
-    b. For Fedora 40 (`zlib-ng-compat` has replaced `zlib` in Fedora 40 and Resolve installer demands `zlib`)
+    b. For Fedora >=40 (`zlib-ng-compat` has replaced `zlib` in Fedora >=40 and Resolve installer demands `zlib`)
 
    ```bash
    chmod +xr DaVinci_Resolve_18.6.5_Linux.run
@@ -103,9 +93,9 @@ sudo mv libgio* disabled-libraries
 sudo mv libgmodule* disabled-libraries
 ```
 
-### Section 5: Fix crash on Fedora 43
+### Section 5: Fix crash due to ABI mismatch
 
-On Fedora 43 Resolve can crash due to a bundled Python/ABI mismatch. Create a small wrapper that preloads the system Python 3.11 library and update the desktop launcher to use it.
+On Fedora >=43 Resolve can crash due to a bundled Python/ABI mismatch. Create a small wrapper that preloads the system Python 3.11 library and update the desktop launcher to use it.
 
 1. Install system Python 3.11 runtime
 ```bash
