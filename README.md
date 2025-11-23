@@ -17,7 +17,7 @@
 
 This should have been way easier in an ideal world :/
 
-## TESTED UPTO Fedora 42
+## TESTED for Fedora 43
 
 **Please read this whole thing once before running any commands.**
 
@@ -51,7 +51,7 @@ sudo dnf remove nvidia-driver xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-
 1. We'll be using Nvidia Drivers from negativo17's repository. You can add the repository by running the following command:
 
 ```bash
-sudo dnf config-manager --add-repo=https://negativo17.org/repos/fedora-nvidia.repo
+sudo dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
 ```
 
 2. Install the Nvidia drivers and CUDA
