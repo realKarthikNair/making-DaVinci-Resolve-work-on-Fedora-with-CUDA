@@ -47,7 +47,7 @@ sudo dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fed
 2. Install the Nvidia drivers and CUDA
 
 ```bash
-sudo dnf install nvidia-driver nvidia-driver-cuda cuda-devel 
+sudo dnf install nvidia-driver nvidia-driver-cuda 
 ```
 
 3. Reboot your system
